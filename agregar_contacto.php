@@ -14,6 +14,7 @@ $nombre = isset($_POST['nombre'])?$_POST['nombre']:"";
 $apellidos = isset($_POST['apellidos'])?$_POST['apellidos']:"";
 $tel_fijo = isset($_POST['tel_fijo'])?$_POST['tel_fijo']:"";
 $correo = isset($_POST['correo'])?$_POST['correo']:"";
+$movil = isset($_POST['movil'])?$_POST['movil']:"";
 
 $erroresValidacion = validarFormularioContacto($nombre,$apellidos,$tel_fijo,$correo, $movil);
 if(count($erroresValidacion)>0){
