@@ -34,7 +34,8 @@ CREATE TABLE `contacto` (
   `nombre` varchar(30) NOT NULL,
   `apellidos` varchar(60) NOT NULL,
   `tel_fijo` varchar(12) NOT NULL,
-  `correo` varchar(30) NOT NULL
+  `correo` varchar(30) NOT NULL,
+  `movil` char(9) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -42,8 +43,8 @@ CREATE TABLE `contacto` (
 --
 
 INSERT INTO `contacto` (`id`, `nombre`, `apellidos`, `tel_fijo`, `correo`) VALUES
-(1, 'Pepe', 'Pérez', '912345678', 'pepe@gmail.com'),
-(2, 'Antonio', 'Nuñez', '987654321', 'antonio@gmail.com');
+(1, 'Pepe', 'Pérez', '912345678', 'pepe@gmail.com', `654545454`),
+(2, 'Antonio', 'Nuñez', '987654321', 'antonio@gmail.com', '696969696');
 
 --
 -- Índices para tablas volcadas
