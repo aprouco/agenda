@@ -15,16 +15,16 @@ $apellidos = isset($_POST['apellidos'])?$_POST['apellidos']:"";
 $tel_fijo = isset($_POST['tel_fijo'])?$_POST['tel_fijo']:"";
 $correo = isset($_POST['correo'])?$_POST['correo']:"";
 
-$erroresValidacion = validarFormularioContacto($nombre,$apellidos,$tel_fijo,$correo);
+$erroresValidacion = validarFormularioContacto($nombre,$apellidos,$tel_fijo,$correo, $movil);
 if(count($erroresValidacion)>0){
     pintarCabeceira();
-    pintarFormularioContacto($_SERVER['PHP_SELF'],"POST",$nombre,$apellidos,$tel_fijo,$correo);
+    pintarFormularioContacto($_SERVER['PHP_SELF'],"POST",$nombre,$apellidos,$tel_fijo,$correo, $movil);
     foreach ($erroresValidacion as $error) {
         echo "<p>* $error </p>";
     }
     pintarPe();
 }else{
-    $resultado = insertarContacto($db,$nombre,$apellidos,$tel_fijo,$correo);
+    $resultado = insertarContacto($db,$nombre,$apellidos,$tel_fijo,$correo, $movil);
     if($resultado){
         if(!desconectar($db)){
             echo "Hubo problemas desconectando";
@@ -39,7 +39,7 @@ if(count($erroresValidacion)>0){
     }
 }
 
-function validarFormularioContacto($n,$a, $t, $c){
+function validarFormularioContacto($n,$a, $t, $c, $m){
     $errs = array();
     if($n == ""){
         array_push($errs, "El nombre no puede quedar vacío");
@@ -63,6 +63,11 @@ function validarFormularioContacto($n,$a, $t, $c){
         array_push($errs, "El correo no puede quedar vacío");
     }
     if(!filter_var($c,FILTER_VALIDATE_EMAIL)){
+        array_push($errs, "El formato de teléfono no es válido");
+    }
+    if($m == ""){
+        array_push($errs, "El movil no puede quedar vacío");
+    }if (!filter_var($m,FILTER_VALIDATE_REGEXP,array("options"=>array("regexp"=>"/^[0-9]{13}$/")))) {
         array_push($errs, "El formato de teléfono no es válido");
     }
     return $errs;
