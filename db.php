@@ -39,7 +39,7 @@ function listarContactos($conexionBD){
 }
 
 function insertarContacto($conexionBD,$nombre,$apellidos,$tel_fijo,$correo,$movil){
-    $sentenzaSQL = "INSERT INTO contacto (nombre, apellidos, tel_fijo, correo, movil) VALUES ('$nombre', '$apellidos', '$tel_fijo', '$correo', 'movil');";
+    $sentenzaSQL = "INSERT INTO contacto (nombre, apellidos, tel_fijo, correo, movil) VALUES ('$nombre', '$apellidos', '$tel_fijo', '$correo', '$movil');";
     $result = mysqli_query($conexionBD, $sentenzaSQL);
 
     if (!$result) {
