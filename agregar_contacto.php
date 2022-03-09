@@ -68,10 +68,9 @@ function validarFormularioContacto($n,$a, $t, $c, $m){
     }
     if($m == ""){
         array_push($errs, "El movil no puede quedar vacío");
-    }if (!filter_var($m,FILTER_VALIDATE_REGEXP,array("options"=>array("regexp"=>"/^[0-9]{13}$/")))) {
+    }
+    if (!filter_var($m,FILTER_VALIDATE_REGEXP,array("options"=>array("regexp"=>"/^[0-9]{13}$/")))) {
         array_push($errs, "El formato de teléfono no es válido");
     }
     return $errs;
 }
-
-
