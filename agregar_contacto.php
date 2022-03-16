@@ -64,7 +64,7 @@ function validarFormularioContacto($n,$a, $t, $c, $m){
         array_push($errs, "El correo no puede quedar vacío");
     }
     if(!filter_var($c,FILTER_VALIDATE_EMAIL)){
-        array_push($errs, "El formato de teléfono no es válido");
+        array_push($errs, "El formato del email no es válido");
     }
     if($m == ""){
         array_push($errs, "El movil no puede quedar vacío");
